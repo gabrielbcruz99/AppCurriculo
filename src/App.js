@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Linking, ScrollView} from 'react-native';
 import foto from './assets/foto_perfil.jpg';
 import Icon from 'react-native-vector-icons/Feather';
 import Card from './components/Card/Index';
+ 
 
 
  
@@ -10,22 +11,28 @@ import Card from './components/Card/Index';
 export default function App() {
 
   function handleRedeSocial(rede_social){
+    const github = 'https://github.com/gabrielbcruz99';
+    const linkedin = 'https://www.linkedin.com/in/gabriel-b-cruz/';
+    const instagram = 'https://www.instagram.com/stgabs99/';
     switch(rede_social){
       case 'github':
-          Alert.alert('Meu Github', 'https://www.linkedin.com/in/gabriel-b-cruz/')
+        Linking.openURL(github)
+
       break
       case 'linkedin':
-          Alert.alert('Meu Linkedin','https://github.com/gabrielbcruz99')
+        Linking.openURL(linkedin)
+
       break
       case 'instagram':
-          Alert.alert('Meu Instagram','https://www.instagram.com/stgabs99/')
+        Linking.openURL(instagram)
+
       break
     }
   }
 
   return (
     <>
-   
+    <ScrollView style={styles.scrowview}>
       <View style={styles.page}> 
         <View style={styles.container_cabecalho}>
           <Image source={foto} style={styles.foto} />
@@ -45,17 +52,20 @@ export default function App() {
         </View>
 
       <Card titulo="Formação Acadêmica">
-        <Text style={styles.card_content_text}>ISERJ/FAETEC - Técnico de Informática(Concluído)</Text>
         <Text style={styles.card_content_text}>Universidade Estácio de Sá - Análise e Desenvolvimento de Sistemas(Cursando)</Text> 
+        <Text style={styles.card_content_text}>ISERJ/FAETEC - Técnico de Informática(Concluído)</Text>
       </Card>  
 
       <Card titulo="Experiência Profissional">
-      <Text style={styles.card_content_text}>DevMedia</Text>
-        <Text style={styles.card_content_text}>Megawork Consultoria</Text> 
+      <Text style={styles.card_content_text}>Megawork Consultoria | Estagiário de Desenvolvimento ABAP</Text> 
+      <Text style={styles.card_content_text}>DevMedia | Desenvolvedor Júnior</Text>
+      <Text style={styles.card_content_text}>Nave do Conhecimento - Irajá | Suporte de TI</Text>
+      <Text style={styles.card_content_text}>UERJ Latic - SR1 | Estagiário de Desenvolvimento</Text>
+
       </Card>  
 
       </View>
-         
+    </ScrollView>    
     </>
   );
 }
@@ -97,8 +107,11 @@ const styles = StyleSheet.create({
   },
   card_content_text: {
     color: '#939393',
-    marginBottom: 20,
+    marginBottom: 10,
   },
+  scrowview: {
+
+  },  
 
 });
 
